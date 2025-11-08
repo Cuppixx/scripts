@@ -4,10 +4,10 @@
 
 ## Commands
 
-- **First run**: `nix run` - Builds the script, downloads latest Minecraft server, and starts it
-- **Start server**: `./result/bin/start-server` - Starts the server with existing server.jar
-- **Stop server**: Type `stop` in the server console and press Enter
-- **Update Minecraft**: `rm server/server.jar && nix run` - Deletes old version and downloads latest
+- `nix run` - Builds the script, downloads latest Minecraft server, and starts it
+- `./result/bin/start-server` - Starts the server with existing server.jar
+- `stop` - Stops the server when executed in the the server console
+- `rm server/server.jar` and `nix run` - Deletes old version and downloads latest
 
 ## Notes
 
