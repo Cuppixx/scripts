@@ -1,0 +1,22 @@
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+# Don't forget to run: cp ~/.config/fish/config.fish /mnt/data/sourcecode/scripts/fish/config.fish.bak
+
+
+function glow
+	command glow --width=(tput cols) $argv
+end
+
+function lls
+	command ls $argv
+end
+
+function cdquick
+	switch $argv[1]
+		case 1
+			cd /mnt/data/software/engines/godot/custom_builds/ProjectFolklore/
+		case 2
+			cd /mnt/data/sourcecode/games/godot/projects/project-folklore-3d/
+		case *
+			echo "Unknown project: $argv[1]"
+	end
+end

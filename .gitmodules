@@ -1,0 +1,6 @@
+[submodule "batch/file_sorter"]
+	path = batch/file_sorter
+	url = git@gist.github.com:b7b2fe74869324933d3419952afdd570.git
+[submodule "batch/sequential_renamer"]
+	path = batch/sequential_renamer
+	url = git@gist.github.com:5c4b4bca0cdd31ba457480c27727e7db.git
