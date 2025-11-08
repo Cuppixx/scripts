@@ -16,3 +16,8 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=Startup
 ```
+
+## Setup: Konsole
+
+Open Konsole and enable `Run all Konsole windows in a single process` in:
+`Settings >> Configure Konsole >> General` for `--new-tab` to work correctly
