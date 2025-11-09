@@ -1,5 +1,4 @@
 #!/bin/bash
 
-ping -c1 1.1.1.1 && { syncthing & obsidian & }
-konsole --new-tab --workdir /mnt/data/ -e fish &
-konsole --new-tab --workdir /mnt/data/ -e fish -c "spotify_player"
+ping -c1 1.1.1.1 && { syncthing & obsidian & spotify & konsole --new-tab --workdir /home/cuppixx/Music/ -e fish & }
+konsole --new-tab --workdir /mnt/data/ -e fish
