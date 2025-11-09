@@ -1,0 +1,38 @@
+[[themes]]
+name = "nordic"
+
+[themes.palette]
+background = "#1a1d23"
+foreground = "#8cc7da"
+black = "#1a1d23"
+blue = "#4a7c8e"
+cyan = "#5ba3b8"
+green = "#7b8c5c"
+magenta = "#8b7ba8"
+red = "#a85757"
+white = "#d4dce8"
+yellow = "#c7a458"
+bright_black = "#35414e"
+bright_blue = "#5ba3c8"
+bright_cyan = "#8cc7da"
+bright_green = "#8ab77d"
+bright_magenta = "#a888c7"
+bright_red = "#c87878"
+bright_white = "#e8f0ff"
+bright_yellow = "#e0c785"
+
+[themes.component_style]
+border = { fg = "BrightBlack" }
+playback_status = { fg = "Red" }
+playback_track = { fg = "BrightYellow", modifiers = ["Bold"] }
+playback_artists = { fg = "Cyan" }
+playback_album = { fg = "Cyan" }
+playback_genres = { fg = "Cyan", modifiers = ["Dim"] }
+playback_metadata = { fg = "BrightBlack", modifiers = ["Dim"] }
+playback_progress_bar = { bg = "BrightBlack", fg = "Blue" }
+block_title = { fg = "Yellow", modifiers = ["Bold"] }
+page_desc = { fg = "Yellow" }
+playlist_desc = { fg = "BrightBlack" }
+table_header = { fg = "Yellow", modifiers = ["Bold"] }
+selection = { bg = "BrightBlack", modifiers = ["Italic"] }
+current_playing = { fg = "BrightYellow", modifiers = ["Bold"] }
