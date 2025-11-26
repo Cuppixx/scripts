@@ -28,7 +28,18 @@
         fi
 
         echo "Starting Minecraft server..."
-        ${java}/bin/java -Xmx2G -Xms1G -jar server.jar nogui
+        ${java}/bin/java \
+          -Xms2G -Xmx2G \
+          -XX:+UnlockExperimentalVMOptions \
+          -XX:+UseG1GC \
+          -XX:G1NewSizePercent=20 \
+          -XX:G1MaxNewSizePercent=40 \
+          -XX:G1HeapRegionSize=16M \
+          -XX:MaxGCPauseMillis=50 \
+          -XX:+DisableExplicitGC \
+          -XX:+AlwaysPreTouch \
+          -Dlog4j2.formatMsgNoLookups=true \
+          -jar server.jar nogui
       '';
     in
       startScript;
