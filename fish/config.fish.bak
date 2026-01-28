@@ -13,10 +13,24 @@ end
 function cdquick
 	switch $argv[1]
 		case 1
-			cd /mnt/data/software/engines/godot/custom_builds/ProjectFolklore/
+			cd /mnt/data/software/engines/godot/official/
 		case 2
-			cd /mnt/data/sourcecode/games/godot/projects/project-folklore-3d/
+			cd /mnt/data/sourcecode/games/godot/projects/ProjectFolklore/
 		case *
 			echo "Unknown project: $argv[1]"
 	end
+end
+
+# git aliases
+function gs
+	git status $argv
+end
+function ga
+	git add $argv
+end
+function gcm
+	git commit -m $argv
+end
+function gco
+	git checkout $argv
 end
