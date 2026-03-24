@@ -12,6 +12,8 @@
       name = "minecraft-server";
 
       startScript = pkgs.writeShellScriptBin "start-server" ''
+        export PATH=${pkgs.fish}/bin:$PATH
+
         mkdir -p server
         cd server
 
@@ -40,6 +42,14 @@
           -XX:+AlwaysPreTouch \
           -Dlog4j2.formatMsgNoLookups=true \
           -jar server.jar nogui
+
+        EXIT_CODE=$?
+
+        echo "Server stopped (exit code: $EXIT_CODE), running backup..."
+
+        fish -c "source ~/.config/fish/config.fish; mc-backup" || echo "Backup failed"
+
+        exit $EXIT_CODE
       '';
     in
       startScript;
