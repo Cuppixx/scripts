@@ -12,6 +12,10 @@
 
 ## Notes
 
-- Once downloaded, the server.jar version stays the same until manually updated
-- Server settings can be configured in `server/server.properties`
-- Default Memory Settings: 1GB min, 2GB max (configurable in flake.nix)
+- Once downloaded, the **server.jar version** stays the same until manually updated
+- **Server settings** can be configured in `server/server.properties`
+- **Default Memory Settings**: 1GB min, 2GB max (configurable in flake.nix)
+- **The `server` folder** is ignored by the parent repo by default  
+  - The server folder itself contains a separate **Git repo for backups**  
+  - This nested repo does not clash with the parent repo since the folder is in `.gitignore`  
+  - No submodule is required
