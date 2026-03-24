@@ -2,35 +2,72 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 # Don't forget to run: cp ~/.config/fish/config.fish /mnt/data/sourcecode/scripts/fish/config.fish.bak
 
 
-function glow
-	command glow --width=(tput cols) $argv
+# ssh agent automation (requires the keychain package)
+eval (keychain --eval id_ed25519)
+
+
+function mc-backup
+    set dir /mnt/data/sourcecode/scripts/nix/mc/forever-mc/server
+
+    if not cd $dir
+        echo "Failed to enter server directory"
+        return 1
+    end
+
+    git add .
+
+    if not git diff --cached --quiet
+        if git commit -m "post-exit update "(date '+%F %T')
+            if git push origin main
+                echo "MC server backup pushed"
+            else
+                echo "Push failed"
+            end
+        else
+            echo "Commit failed"
+        end
+    else
+        echo "No changes to backup"
+    end
 end
+
+
+
+# custom commands and overrides
+function glow
+        command glow --width=(tput cols) $argv
+end
+
 
 function lls
-	command ls $argv
+        command ls $argv
 end
 
+
 function cdquick
-	switch $argv[1]
-		case 1
-			cd /mnt/data/software/engines/godot/official/
-		case 2
-			cd /mnt/data/sourcecode/games/godot/projects/ProjectFolklore/
-		case *
-			echo "Unknown project: $argv[1]"
-	end
+        switch $argv[1]
+                case 1
+                        cd /mnt/data/software/engines/godot/official/
+                case 2
+                        cd /mnt/data/sourcecode/games/godot/projects/ProjectFolklore/
+                case *
+                        echo "Unknown project: $argv[1]"
+        end
 end
+
+
 
 # git aliases
 function gs
-	git status $argv
+        git status $argv
 end
 function ga
-	git add $argv
+        git add $argv
 end
 function gcm
-	git commit -m $argv
+        git commit -m $argv
 end
 function gco
-	git checkout $argv
+        git checkout $argv
 end
+
