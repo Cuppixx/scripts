@@ -5,6 +5,7 @@
 ## Commands
 
 - `nix run` - Builds the script, downloads latest Minecraft server, and starts it
+- `nix build` - Builds the script without running it and creates the `result/` symlink
 - `./result/bin/start-server` - Starts the server with existing server.jar
 - `stop` - Stops the server when executed in the the server console
 - `rm server/server.jar` and `nix run` - Deletes old version and downloads latest
