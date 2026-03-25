@@ -1,5 +1,7 @@
 # README
 
+**The `startup.sh` script is currently deprecated as it caused a bug on CachyOS that got the device stuck in the boot process!**
+
 ## Add to autostart
 
 To automatically run the startup script add a .desktop file into the autostart folder:
