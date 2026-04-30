@@ -3,32 +3,39 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 
 # ssh agent automation (requires the keychain package)
-eval (keychain --eval id_ed25519)
+function init-keychain
+    if not set -q SSH_AUTH_SOCK; or not test -S $SSH_AUTH_SOCK
+        eval (keychain --eval ~/.ssh/id_ed25519)
+    end
+end
 
+if status is-interactive
+    init-keychain
+end
 
 function mc-backup
-    set dir /mnt/data/sourcecode/scripts/nix/mc/forever-mc/server
+        set dir /mnt/data/sourcecode/scripts/nix/mc/forever-mc/server
 
-    if not cd $dir
-        echo "Failed to enter server directory"
-        return 1
-    end
-
-    git add .
-
-    if not git diff --cached --quiet
-        if git commit -m "post-exit update "(date '+%F %T')
-            if git push origin main
-                echo "MC server backup pushed"
-            else
-                echo "Push failed"
-            end
-        else
-            echo "Commit failed"
+        if not cd $dir
+                echo "Failed to enter server directory"
+                return 1
         end
-    else
-        echo "No changes to backup"
-    end
+
+        git add .
+
+        if not git diff --cached --quiet
+                if git commit -m "post-exit update "(date '+%F %T')
+                if git push origin main
+                        echo "MC server backup pushed"
+                else
+                        echo "Push failed"
+                end
+                else
+                echo "Commit failed"
+                end
+        else
+                echo "No changes to backup"
+        end
 end
 
 
@@ -45,6 +52,30 @@ end
 
 
 function cdquick
+        if test (count $argv) -eq 0
+                set _first '--help'
+        else
+                set _first $argv[1]
+        end
+
+        switch $_first
+                case --list -l
+                        echo "1: /mnt/data/software/engines/godot/official/"
+                        echo "2: /mnt/data/sourcecode/games/godot/projects/ProjectFolklore/"
+                        return 0
+                case --help -h
+                        echo "Usage: cdquick [--list|--help] <num>"
+                        echo
+                        echo "Options:"
+                        echo "  --list, -l   List available quick directories"
+                        echo "  --help, -h   Show this help message (default)"
+                        echo
+                        echo "Examples:"
+                        echo "  cdquick 1"
+                        echo "  cdquick --list"
+                        return 0
+        end
+
         switch $argv[1]
                 case 1
                         cd /mnt/data/software/engines/godot/official/
@@ -58,9 +89,6 @@ end
 
 
 # git aliases
-function gs
-        git status $argv
-end
 function ga
         git add $argv
 end
@@ -70,4 +98,21 @@ end
 function gco
         git checkout $argv
 end
-
+function gd
+        git diff $argv
+end
+function gf
+        git fetch $argv
+end
+function gl
+        git log --oneline --graph --decorate --all $argv
+end
+function gp
+        git push $argv
+end
+function gpl
+        git pull $argv
+end
+function gs
+        git status $argv
+end

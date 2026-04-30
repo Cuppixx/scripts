@@ -1,6 +1,5 @@
 # TODO
 
-- Find out why the startup script caused my root ssd to be stuck in the boot process
 - Find a more reliable way to automate the mc server backup
 - Play around with setting up modded mc servers via nix
 - Add another spotify_player theme to the theme.toml for some variety
