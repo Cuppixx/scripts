@@ -22,5 +22,4 @@
 
 ## PostExit Command
 
-When running a fish shell env and using the `config.fish` defined in `scripts/fish/` the `fish -c "source ~/.config/fish/config.fish; mc-backup"` command in `flake.nix` / `config.fish` can be **configured to automatically push** the `server/` folder to a private **github repository**.
-Some files within the `server/` folder are modified on server start, stop (even after the post-exit command ran) or at runtime. **To catch file changes more reliably we can add the same command to the clients post-exit hook** (setable directly in the prismlauncher app for example). This executes the command both after the client quits and after the server stops. Keep in mind that this **still might not cover all file changes** since the execution order can be a bit weird sometimes.
+When running a fish shell env with the `config.fish` defined in `scripts/fish/` the `fish -c "init-keychain; mc-backup"` command in `flake.nix`, `config.fish` can be **configured to automatically push** the `server/` folder to a private **github repository**.

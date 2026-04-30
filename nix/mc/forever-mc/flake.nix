@@ -8,7 +8,7 @@
   outputs = { self, nixpkgs }: {
     packages.x86_64-linux.default = let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
-      java = pkgs.openjdk21;
+      java = pkgs.openjdk25;
       name = "minecraft-server";
 
       startScript = pkgs.writeShellScriptBin "start-server" ''
@@ -47,7 +47,7 @@
 
         echo "Server stopped (exit code: $EXIT_CODE), running backup..."
 
-        fish -c "source ~/.config/fish/config.fish; mc-backup" || echo "Backup failed"
+        fish -c "init-keychain; mc-backup"
 
         exit $EXIT_CODE
       '';
