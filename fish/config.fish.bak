@@ -101,6 +101,9 @@ end
 function gd
         git diff $argv
 end
+function gdt
+        git difftool $argv
+end
 function gf
         git fetch $argv
 end
